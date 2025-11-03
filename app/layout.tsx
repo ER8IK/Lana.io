@@ -1,15 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Orbitron, Roboto, Lora, Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const orbitron = Orbitron({
   subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-orbitron",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
 });
 
 export const metadata: Metadata = {
@@ -23,10 +40,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html 
+      lang="en" 
+      className={`${inter.variable} ${orbitron.variable} ${roboto.variable} ${lora.variable} ${firaCode.variable}`}
+    >
+      <body className={inter.className}>
         {children}
       </body>
     </html>
