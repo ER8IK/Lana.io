@@ -24,7 +24,7 @@ const Header: FC<HeaderProps> = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Логотип */}
         <div className="font-orbitron text-xl sm:text-3xl font-bold flex items-center space-x-2">
-  <Logo size={40} color="#0a0c16" /> {/* тут можно менять размер и цвет */}
+  <Logo size={40} /> {/* тут можно менять размер и цвет */}
   <Link href="/" className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
     CircuitLabs
   </Link>
