@@ -10,7 +10,7 @@ const Header: FC<HeaderProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
-    { href: "#home", label: "Hero" },
+    { href: "#main", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
     { href: "#services", label: "Solutions" },

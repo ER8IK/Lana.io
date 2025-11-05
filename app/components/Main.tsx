@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Main() {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ["Blockchain", "Web3", "Crypto", "DeFi"];
+  const words = ["Blockchain", "Web3", "Quantum resistant", "Zk"]; // обычный пробел
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +34,7 @@ export default function Main() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="text-5xl sm:text-6xl md:text-7xl font-bold text-blue-400"
+                className="text-5xl sm:text-6xl md:text-7xl font-bold text-blue-400 whitespace-nowrap"
               >
                 {words[currentWord]}
               </motion.span>
@@ -44,7 +44,7 @@ export default function Main() {
 
         <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed">
           Pioneering the next generation of decentralized systems with{" "}
-          <span className="text-blue-400">cutting-edge cryptography</span> and{" "}
+          <span className="text-blue-400">advanced cryptography</span> and{" "}
           <span className="text-cyan-400">quantum-resistant security</span>.
         </p>
       </motion.div>
