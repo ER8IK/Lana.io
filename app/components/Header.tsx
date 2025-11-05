@@ -3,6 +3,7 @@
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./LogoSphere"
 
 interface HeaderProps {}
 
@@ -13,7 +14,7 @@ const Header: FC<HeaderProps> = () => {
     { href: "#main", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
-    { href: "#services", label: "Solutions" },
+    { href: "#solutions", label: "Solutions" },
     { href: "#team", label: "Research" },
     { href: "#contact", label: "Contact" },
   ];
@@ -22,11 +23,13 @@ const Header: FC<HeaderProps> = () => {
     <header className="fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur-sm text-white shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Логотип */}
-        <div className="font-orbitron text-xl sm:text-3xl font-bold">
-          <Link href="/" className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            CircuitLabs
-          </Link>
-        </div>
+        <div className="font-orbitron text-xl sm:text-3xl font-bold flex items-center space-x-2">
+  <Logo size={40} color="#0a0c16" /> {/* тут можно менять размер и цвет */}
+  <Link href="/" className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+    CircuitLabs
+  </Link>
+</div>
+
 
         {/* Десктопная навигация */}
         <nav className="space-x-6 hidden md:flex font-orbitron text-lg md:text-xl">

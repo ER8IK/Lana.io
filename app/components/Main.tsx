@@ -5,15 +5,35 @@ import { useState, useEffect } from "react";
 
 export default function Main() {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ["Blockchain", "Web3", "Quantum resistant", "Zk"]; // обычный пробел
+  const [isMobile, setIsMobile] = useState(false);
+  
+  const words = ["Blockchain", "Web3", "Quantum resistant", "Zk"];
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const interval = setInterval(() => {
       setCurrentWord(prev => (prev + 1) % words.length);
     }, 3000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, [words.length]);
+
+  // Определяем размер шрифта в зависимости от слова и устройства
+  const getFontSizeClass = () => {
+    if (words[currentWord] === "Quantum resistant" && isMobile) {
+      return "text-3xl sm:text-5xl md:text-6xl lg:text-7xl";
+    }
+    return "text-5xl sm:text-6xl md:text-7xl";
+  };
 
   return (
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center md:justify-start px-6 md:px-12 py-24 bg-[#0a0c16]">
@@ -34,7 +54,7 @@ export default function Main() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="text-5xl sm:text-6xl md:text-7xl font-bold text-blue-400 whitespace-nowrap"
+                className={`font-bold text-blue-400 whitespace-nowrap ${getFontSizeClass()}`}
               >
                 {words[currentWord]}
               </motion.span>
