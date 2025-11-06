@@ -28,11 +28,23 @@ export default function Solutions() {
           className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto"
         >
           Innovative, quantum-secure, and blockchain-native projects that redefine
-          digital ownership and privacy.
+          digital ownership.
         </motion.p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+         <motion.div
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          className="cursor-pointer bg-[#101223] border border-cyan-500/30 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/20 transition"
+        >
+          <h3 className="text-2xl font-orbitron text-cyan-400 mb-2">
+            QID: Quantum Identity
+          </h3>
+          <p className="text-gray-300">
+            An early stage anchoring layer that allows to link your classic and quantum secure keys today.
+          </p>
+        </motion.div>
         {/* Bitcoin Vaults */}
         <motion.div
           onClick={() => setOpen(true)}
@@ -50,18 +62,7 @@ export default function Solutions() {
         </motion.div>
 
         {/* Placeholder for future project */}
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          className="cursor-pointer bg-[#101223] border border-cyan-500/30 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/20 transition"
-        >
-          <h3 className="text-2xl font-orbitron text-cyan-400 mb-2">
-            QID: Quantum Identity
-          </h3>
-          <p className="text-gray-300">
-            A next-gen decentralized identity layer secured against quantum attacks.
-          </p>
-        </motion.div>
+       
       </div>
 
       {/* Modal */}

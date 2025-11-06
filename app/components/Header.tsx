@@ -3,7 +3,7 @@
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "./LogoSphere"
+import Logo from "./LogoSphere";
 
 interface HeaderProps {}
 
@@ -13,7 +13,6 @@ const Header: FC<HeaderProps> = () => {
   const links = [
     { href: "#main", label: "Home" },
     { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
     { href: "#solutions", label: "Solutions" },
     { href: "#team", label: "Research" },
     { href: "#contact", label: "Contact" },
@@ -24,20 +23,24 @@ const Header: FC<HeaderProps> = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Логотип */}
         <div className="font-orbitron text-xl sm:text-3xl font-bold flex items-center space-x-2">
-  <Logo size={40} /> {/* тут можно менять размер и цвет */}
-  <Link href="/" className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-    CircuitLabs
-  </Link>
-</div>
-
+          <Logo size={40} />
+          <Link
+            href="/"
+            className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
+          >
+            CircuitLabs
+          </Link>
+        </div>
 
         {/* Десктопная навигация */}
-        <nav className="space-x-6 hidden md:flex font-orbitron text-lg md:text-xl">
+        <nav className="hidden md:flex space-x-6 font-orbitron text-lg md:text-xl">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent hover:scale-110 transition-transform"
+              className="relative bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent
+                         text-lg md:text-xl font-orbitron transition-transform hover:scale-110
+                         hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]"
             >
               {link.label}
             </Link>
@@ -81,7 +84,9 @@ const Header: FC<HeaderProps> = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent text-lg hover:scale-105 transition-transform"
+                  className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent
+                             text-lg font-orbitron transition-transform hover:scale-105
+                             hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]"
                 >
                   {link.label}
                 </Link>

@@ -7,36 +7,28 @@ export default function Main() {
   const [currentWord, setCurrentWord] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   
-  const words = ["Blockchain", "Web3", "Quantum resistant", "Zk"];
+  const words = ["Secure blockchains", "Zk proofs", "Quantum resistant"];
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     const interval = setInterval(() => {
       setCurrentWord(prev => (prev + 1) % words.length);
     }, 3000);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
     };
-  }, [words.length]);
-
-  // Определяем размер шрифта в зависимости от слова и устройства
-  const getFontSizeClass = () => {
-    if (words[currentWord] === "Quantum resistant" && isMobile) {
-      return "text-3xl sm:text-5xl md:text-6xl lg:text-7xl";
-    }
-    return "text-5xl sm:text-6xl md:text-7xl";
-  };
+  }, []); // ✅ пустой массив зависимостей
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex items-center justify-center md:justify-start px-6 md:px-12 py-24 bg-[#0a0c16]">
+    <section
+      id="home"
+      className="relative min-h-screen w-full flex items-center justify-center md:justify-start px-6 md:px-12 py-24 bg-[#0a0c16]"
+    >
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -48,13 +40,16 @@ export default function Main() {
           <span className="flex items-baseline gap-2">
             <span>of</span>
             <AnimatePresence mode="wait">
-              <motion.span 
+              <motion.span
                 key={currentWord}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className={`font-bold text-blue-400 whitespace-nowrap ${getFontSizeClass()}`}
+                style={{
+                  fontSize: isMobile ? "clamp(1.5rem, 5vw, 2.5rem)" : "clamp(2.5rem, 5vw, 3rem)"
+                }}
+                className={`font-bold text-blue-400 ${isMobile ? "whitespace-normal break-words" : "whitespace-nowrap"}`}
               >
                 {words[currentWord]}
               </motion.span>

@@ -21,7 +21,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed"
         >
-          <span className="text-blue-400 font-semibold">Mission:</span> Keep <span className="text-blue-400 font-semibold">Bitcoin</span> a durable store of value through the <span className="text-cyan-400 font-semibold">quantum era</span> without protocol changes.
+          <span className="text-blue-400 font-semibold">Mission:</span> <span className="text-blue-400 font-semibold">Empower</span> users to take control of their <span className="text-cyan-400 font-semibold">quantum resistant</span> future. <span className="text-blue-400 font-semibold">Protect</span> your funds and your <span className="text-cyan-400 font-semibold">identify</span>.
         </motion.p>
 
         <motion.p
@@ -30,7 +30,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mt-4"
         >
-          <span className="text-blue-400 font-semibold">How:</span> <span className="text-cyan-400 font-semibold">Quantum-Guarded Vaults (QGVs)</span>: <span className="text-blue-400 font-semibold">P2WSH scripts</span> enforced via <span className="text-cyan-400 font-semibold">BitVM-style optimistic disputes</span>.
+          <span className="text-blue-400 font-semibold">How:</span> Build a <span className="text-blue-400 font-semibold">suite of tools</span> that seamlessly provide <span className="text-cyan-400 font-semibold">quantum level security</span> across <span className="text-blue-400 font-semibold">multiple blockchains</span>.
         </motion.p>
       </div>
     </section>

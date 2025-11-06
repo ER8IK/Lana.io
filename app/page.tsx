@@ -32,7 +32,7 @@ export default function Page() {
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <motion.div variants={sectionVariants}><Header /></motion.div>
+      <Header />
       <motion.div variants={sectionVariants}><Main /></motion.div>
       <motion.div variants={sectionVariants}><About /></motion.div>
       <motion.div variants={sectionVariants}><Solutions /></motion.div>
