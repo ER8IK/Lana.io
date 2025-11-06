@@ -7,7 +7,7 @@ export default function Main() {
   const [currentWord, setCurrentWord] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   
-  const words = ["Secure blockchains", "Zk proofs", "Quantum resistant"];
+  const words = ["Secure blockchains", "Zk proofs", "Quantum resistance"];
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
