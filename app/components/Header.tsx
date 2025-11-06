@@ -3,7 +3,8 @@
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "./LogoSphere";
+import Image from "next/image";
+
 
 interface HeaderProps {}
 
@@ -20,13 +21,21 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur-sm text-white shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
         {/* Логотип */}
-        <div className="font-orbitron text-xl sm:text-3xl font-bold flex items-center space-x-2">
-          <Logo size={40} />
+        <div className="flex items-center space-x-3">
+          {/* Контейнер для логотипа */}
+          <Image
+            src="/CircuitLogo.svg"
+            alt="Circuit Labs logo"
+            width={120}
+            height={120}
+            className="w-24 h-24 md:w-28 md:h-28 object-contain"
+          />
+
           <Link
             href="/"
-            className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
+            className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent text-xl sm:text-3xl font-orbitron font-bold"
           >
             CircuitLabs
           </Link>
@@ -39,8 +48,7 @@ const Header: FC<HeaderProps> = () => {
               key={link.href}
               href={link.href}
               className="relative bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent
-                         text-lg md:text-xl font-orbitron transition-transform hover:scale-110
-                         hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]"
+                         transition-transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]"
             >
               {link.label}
             </Link>
