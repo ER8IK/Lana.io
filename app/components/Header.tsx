@@ -3,7 +3,6 @@
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 
 interface HeaderProps {}
@@ -25,12 +24,12 @@ const Header: FC<HeaderProps> = () => {
         {/* Логотип */}
         <div className="flex items-center space-x-3">
           {/* Контейнер для логотипа */}
-          <Image
-            src="/CircuitLogo.svg"
+          <img
+            src="/LogoCircuit.png"
             alt="Circuit Labs logo"
-            width={120}
-            height={120}
-            className="w-24 h-24 md:w-28 md:h-28 object-contain"
+            width={60}
+            height={60}
+            className="w-14 h-14 md:w-18 md:h-18 object-contain"
           />
 
           <Link
