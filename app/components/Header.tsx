@@ -14,7 +14,7 @@ const Header: FC<HeaderProps> = () => {
     { href: "#main", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#solutions", label: "Solutions" },
-    { href: "#team", label: "Research" },
+    { href: "#research", label: "Research" },
     { href: "#contact", label: "Contact" },
   ];
 
