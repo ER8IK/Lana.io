@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Play, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 const Research = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const videos = [
@@ -18,7 +21,7 @@ const Research = () => {
     {
       id: "P7_SfxRrXTE",
       title:
-        "Here’s What Will Happen When We Combine Quantum Computing With AI!",
+        "Here's What Will Happen When We Combine Quantum Computing With AI!",
       description:
         "We will look, how Quantum Cryptography works and how it uses the interesting ideas of quantum mechanics to achieve levels of security that were once thought to be impossible",
       duration: "11:49",
@@ -36,13 +39,13 @@ const Research = () => {
       id: "ZzNhoFRauMk",
       title: "Designing for Harsh Environments & Quantum Cryptography",
       description:
-        "In this episode of Embedded Insiders, Rich and Jeff Baldwin, Director of Engineering at Sealevel Systems, discuss the process of designing systems for harsh environments and how Sealevel’s expertise helps customers get started with safe and reliable solutions.",
+        "In this episode of Embedded Insiders, Rich and Jeff Baldwin, Director of Engineering at Sealevel Systems, discuss the process of designing systems for harsh environments and how Sealevel's expertise helps customers get started with safe and reliable solutions.",
       duration: "33:30",
       category: "Design",
     },
     {
       id: "_C5dkUiiQnw",
-      title: "Post-quantum cryptography: Security after Shor’s algorithm",
+      title: "Post-quantum cryptography: Security after Shor's algorithm",
       description:
         "Quantum Security protects data using principles of quantum mechanics. It ensures information remains secure even against future computing threats.",
       duration: "7:17",
@@ -58,63 +61,87 @@ const Research = () => {
     },
   ];
 
-  const openVideo = (videoId: string) => {
-    setActiveVideo(videoId);
-  };
-
-  const closeVideo = () => {
-    setActiveVideo(null);
-  };
+  const openVideo = (videoId: string) => setActiveVideo(videoId);
+  const closeVideo = () => setActiveVideo(null);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const isMobile = window.innerWidth < 768;
-      const scrollAmount = isMobile ? 300 : 400;
-      scrollContainerRef.current.scrollBy({
+      const container = scrollContainerRef.current;
+      const card = container.querySelector<HTMLDivElement>("div"); // первая карточка
+      if (!card) return;
+
+      const cardWidth = card.offsetWidth;
+      const gap = window.innerWidth < 768 ? 16 : 24; // gap из tailwind
+      const scrollAmount = cardWidth + gap;
+
+      container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
       });
     }
   };
 
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollLeft = container.scrollLeft;
+      const card = container.querySelector<HTMLDivElement>("div");
+      if (!card) return;
+
+      const cardWidth = card.offsetWidth;
+      const gap = window.innerWidth < 768 ? 16 : 24;
+      const index = Math.round(scrollLeft / (cardWidth + gap));
+      setActiveIndex(Math.min(index, videos.length - 1));
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br p-4 md:p-8 pt-20 md:pt-24">
+    <div id="research" className="min-h-screen bg-gradient-to-br p-4 md:p-8 pt-20 md:pt-34">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <h1 className="font-orbitron text-3xl md:text-5xl font-bold text-blue-400 mb-2 tracking-tight">
-            Research
-          </h1>
-          <p className="text-base md:text-xl text-gray-300 px-4">
-            Explore our curated collection of research videos on cutting-edge
-            technology topics.
-          </p>
-        </div>
+        <div className="text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-orbitron mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent"
+        >
+          Solutions
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-base md:text-xl text-gray-300 px-4"
+        >
+          Innovative, quantum-secure, and blockchain-native projects that redefine
+          digital ownership.
+        </motion.p>
+      </div>
 
-        {/* Carousel Container */}
+        {/* Carousel */}
         <div className="relative group">
-          {/* Left Arrow - Hidden on mobile */}
+          {/* Left Arrow */}
           <button
-  onClick={() => scroll("left")}
-  className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-blue-400/90 hover:bg-blue-400 font-semibold text-white p-3 rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
->
-  <ChevronLeft className="w-6 h-6" />
-</button>
+            onClick={() => scroll("left")}
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-blue-400/90 hover:bg-blue-400 font-semibold text-white p-3 rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
 
-
-          {/* Right Arrow - Hidden on mobile */}
+          {/* Right Arrow */}
           <button
-  onClick={() => scroll("right")}
-  className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-blue-400/90 hover:bg-blue-400 font-semibold text-white p-3 rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
->
-  <ChevronRight className="w-6 h-6" />
-</button>
-
+            onClick={() => scroll("right")}
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-blue-400/90 hover:bg-blue-400 font-semibold text-white p-3 rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-2 snap-x snap-mandatory"
+            onScroll={handleScroll}
+            className="flex gap-4 md:gap-6 overflow-x-auto overflow-visible scrollbar-hide scroll-smooth pb-4 px-2 pt-8 md:pt-12 snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {videos.map((video) => (
@@ -132,7 +159,7 @@ const Research = () => {
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover/card:bg-black/20 transition-colors duration-300" />
 
-                    {/* Play Button Overlay */}
+                    {/* Play Button */}
                     <button
                       onClick={() => openVideo(video.id)}
                       className="absolute inset-0 flex items-center justify-center"
@@ -142,14 +169,14 @@ const Research = () => {
                       </div>
                     </button>
 
-                    {/* Duration Badge */}
+                    {/* Duration */}
                     <div className="absolute bottom-2 md:bottom-3 right-2 md:right-3 bg-black/80 backdrop-blur-sm px-2 md:px-3 py-1 rounded-lg">
                       <span className="text-white text-xs md:text-sm font-medium">
                         {video.duration}
                       </span>
                     </div>
 
-                    {/* Category Badge */}
+                    {/* Category */}
                     <div className="absolute top-2 md:top-3 left-2 md:left-3 bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 backdrop-blur-sm px-2 md:px-3 py-1 rounded-full">
                       <span className="text-white text-xs font-semibold">
                         {video.category}
@@ -195,7 +222,11 @@ const Research = () => {
             {videos.map((_, index) => (
               <div
                 key={index}
-                className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-400/30"
+                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? "bg-purple-400 scale-125"
+                    : "bg-purple-400/30"
+                }`}
               />
             ))}
           </div>
