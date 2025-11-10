@@ -9,10 +9,36 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["400","700"], variable: "--
 const lora = Lora({ subsets: ["latin"], variable: "--font-lora" });
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-fira-code" });
 
-// Здесь создаём metadata
 export const metadata: Metadata = {
   title: "CircuitLabs",
   description: "Quantum Resistant Blockchain Solutions",
+  icons: {
+    icon: "/LogoCircuit.ico",
+    apple: "/LogoCircuit.png",
+    other: [
+      { url: "/LogoCircuit.png", type: "image/png", sizes: "192x192" },
+      { url: "/LogoCircuit.png", type: "image/png", sizes: "512x512" }
+    ]
+  },
+  openGraph: {
+    title: "CircuitLabs",
+    description: "Quantum Resistant Blockchain Solutions",
+    url: "https://circuitlabs.io/",
+    siteName: "CircuitLabs",
+    images: [
+      { url: "https://circuitlabs.io/LogoCircuit.png", width: 1200, height: 630, alt: "CircuitLabs Logo" }
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CircuitLabs",
+    description: "Quantum Resistant Blockchain Solutions",
+    images: ["https://circuitlabs.io/LogoCircuit.png"],
+    site: "@CircuitLabs", // если есть твиттер аккаунт
+    creator: "@CircuitLabs",
+  },
+  metadataBase: new URL("https://circuitlabs.io"), // базовый URL для относительных ссылок
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
