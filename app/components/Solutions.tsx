@@ -7,6 +7,26 @@ import { X } from "lucide-react";
 export default function Solutions() {
   const [open, setOpen] = useState(false);
 
+  // Пример статусов проектов
+  const projects = [
+    {
+      id: 1,
+      title: "QID: Quantum Identity",
+      description:
+        "An early stage anchoring layer that allows to link your classic and quantum secure keys today.",
+      status: "inProgress", // или "ready"
+      color: "cyan",
+    },
+    {
+      id: 2,
+      title: "Bitcoin Quantum-Secure Vaults",
+      description:
+        "Receiver-enforced vaults that work on Bitcoin today. No new blockchains, no protocol changes.",
+      status: "ready",
+      color: "blue",
+    },
+  ];
+
   return (
     <section
       id="solutions"
@@ -33,36 +53,29 @@ export default function Solutions() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-         <motion.div
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          className="cursor-pointer bg-[#101223] border border-cyan-500/30 rounded-2xl p-6 shadow-lg hover:shadow-cyan-500/20 transition"
-        >
-          <h3 className="text-2xl font-orbitron text-cyan-400 mb-2">
-            QID: Quantum Identity
-          </h3>
-          <p className="text-gray-300">
-            An early stage anchoring layer that allows to link your classic and quantum secure keys today.
-          </p>
-        </motion.div>
-        {/* Bitcoin Vaults */}
-        <motion.div
-          onClick={() => setOpen(true)}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          className="cursor-pointer bg-[#101223] border border-blue-500/30 rounded-2xl p-6 shadow-lg hover:shadow-blue-500/20 transition"
-        >
-          <h3 className="text-2xl font-orbitron text-blue-400 mb-2">
-            Bitcoin Quantum-Secure Vaults
-          </h3>
-          <p className="text-gray-300">
-            Receiver-enforced vaults that work on Bitcoin today. No new blockchains, no
-            protocol changes.
-          </p>
-        </motion.div>
+        {projects.map((project) => (
+          <motion.div
+            key={project.id}
+            onClick={() => project.status === "ready" && setOpen(true)}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className={`relative cursor-pointer bg-[#101223] border border-${project.color}-500/30 rounded-2xl p-6 shadow-lg hover:shadow-${project.color}-500/20 transition`}
+          >
+            {/* Маленький статус значок */}
+            <span
+              className={`absolute top-4 right-4 w-3 h-3 rounded-full ${
+                project.status === "inProgress" ? "bg-red-500" : "bg-green-500"
+              }`}
+            />
 
-        {/* Placeholder for future project */}
-       
+            <h3
+              className={`text-2xl font-orbitron text-${project.color}-400 mb-2`}
+            >
+              {project.title}
+            </h3>
+            <p className="text-gray-300">{project.description}</p>
+          </motion.div>
+        ))}
       </div>
 
       {/* Modal */}
@@ -101,44 +114,34 @@ export default function Solutions() {
 
               <ul className="text-gray-300 space-y-3 list-disc pl-5">
                 <li>
-                  <b className="text-cyan-400">Quantum computing is advancing fast</b>.
-                  Algorithms like Shor threaten RSA/ECDSA/Schnorr; timelines are uncertain, funds are at risk.
+                  <b className="text-cyan-400">Quantum computing is advancing fast</b>. Algorithms like Shor threaten RSA/ECDSA/Schnorr; timelines are uncertain, funds are at risk.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Decentralized ≠ flip a switch</b>.
-                  Centralized platforms can upgrade to PQC overnight; blockchains require millions of independent actions.
+                  <b className="text-cyan-400">Decentralized ≠ flip a switch</b>. Centralized platforms can upgrade to PQC overnight; blockchains require millions of independent actions.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Ossified by design</b>.
-                  Mature chains resist new protocol features; waiting for new opcodes isn’t a plan.
+                  <b className="text-cyan-400">Ossified by design</b>. Mature chains resist new protocol features; waiting for new opcodes isn’t a plan.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Users resist moving to new L1s</b>.
-                  People won’t move funds to brand-new chains just for PQ; meet them on Bitcoin.
+                  <b className="text-cyan-400">Users resist moving to new L1s</b>. People won’t move funds to brand-new chains just for PQ; meet them on Bitcoin.
                 </li>
                 <li>
-                  <b className="text-cyan-400">PoS is only as secure as its validators’ keys</b>.
-                  Validator keys & slashing rules complicate PQ migration.
+                  <b className="text-cyan-400">PoS is only as secure as its validators’ keys</b>. Validator keys & slashing rules complicate PQ migration.
                 </li>
                 <li>
-                  <b className="text-cyan-400">PoW remains robust</b>.
-                  Grover gives ~√ speed-up on hashing; SHA-256d security margin remains high.
+                  <b className="text-cyan-400">PoW remains robust</b>. Grover gives ~√ speed-up on hashing; SHA-256d security margin remains high.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Pubkeys leak at spend</b>.
-                  Many Bitcoin outputs reveal EC pubkeys on spend; mempool time = attack window.
+                  <b className="text-cyan-400">Pubkeys leak at spend</b>. Many Bitcoin outputs reveal EC pubkeys on spend; mempool time = attack window.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Scripts can guard value</b>.
-                  Pay-to-script-hash (P2WSH) lets you receive to predicates.
+                  <b className="text-cyan-400">Scripts can guard value</b>. Pay-to-script-hash (P2WSH) lets you receive to predicates.
                 </li>
                 <li>
-                  <b className="text-cyan-400">BitVM-style enforcement</b>.
-                  We verify complex statements off-chain; if someone lies, a tiny on-chain fault proves it.
+                  <b className="text-cyan-400">BitVM-style enforcement</b>. We verify complex statements off-chain; if someone lies, a tiny on-chain fault proves it.
                 </li>
                 <li>
-                  <b className="text-cyan-400">Prove you own a PQ key</b>.
-                  A spender can prove knowledge of a quantum-safe signature to unlock funds.
+                  <b className="text-cyan-400">Prove you own a PQ key</b>. A spender can prove knowledge of a quantum-safe signature to unlock funds.
                 </li>
               </ul>
             </motion.div>

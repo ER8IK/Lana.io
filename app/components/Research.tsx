@@ -96,28 +96,31 @@ const Research = () => {
   };
 
   return (
-    <div id="research" className="min-h-screen bg-gradient-to-br p-4 md:p-8 pt-20 md:pt-34">
+    <div
+      id="research"
+      className="min-h-screen bg-gradient-to-br p-4 md:p-8 pt-20 md:pt-34"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-orbitron mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent"
-        >
-          Solutions
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-base md:text-xl text-gray-300 px-4"
-        >
-          Innovative, quantum-secure, and blockchain-native projects that redefine
-          digital ownership.
-        </motion.p>
-      </div>
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-orbitron mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent"
+          >
+            Research
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base md:text-xl text-gray-300 px-4"
+          >
+            Exploring cutting-edge technologies in quantum cryptography, AI,
+            <br /> and blockchain that are shaping the future of secure digital innovation.
+          </motion.p>
+        </div>
 
         {/* Carousel */}
         <div className="relative group">
@@ -218,11 +221,12 @@ const Research = () => {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="flex justify-center gap-1.5 md:gap-2 mt-4 md:mt-6">
+          {/* Scroll Indicator */}
+          <div className="flex justify-center gap-1.5 mt-4 md:hidden">
             {videos.map((_, index) => (
               <div
                 key={index}
-                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-300 ${
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                   index === activeIndex
                     ? "bg-purple-400 scale-125"
                     : "bg-purple-400/30"
