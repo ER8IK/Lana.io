@@ -25,7 +25,7 @@ const sectionVariants = {
 
 export default function Page() {
   return (
-    <div className="h-screen overflow-y-scroll snap-y snap-proximity scroll-smooth">
+    <div className="h-screen overflow-auto snap-y snap-proximity scroll-smooth">
       <Header />
       
       <motion.main
