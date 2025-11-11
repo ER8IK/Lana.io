@@ -30,14 +30,7 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "CircuitLabs",
-    description: "Quantum Resistant Blockchain Solutions",
-    images: ["https://circuitlabs.io/LogoCircuit.png"],
-    site: "@CircuitLabs", // если есть твиттер аккаунт
-    creator: "@CircuitLabs",
-  },
+  
   metadataBase: new URL("https://circuitlabs.io"), // базовый URL для относительных ссылок
 };
 

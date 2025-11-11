@@ -59,8 +59,8 @@ export default function Solutions() {
             onClick={() => project.status === "ready" && setOpen(true)}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className={`relative cursor-pointer bg-[#101223] border border-${project.color}-500/30 rounded-2xl p-6 shadow-lg hover:shadow-${project.color}-500/20 transition`}
-          >
+            className="relative cursor-pointer bg-[#101223] border border-white/10 rounded-2xl p-6 shadow-lg transition"
+    >
             {/* Маленький статус значок */}
             <span
               className={`absolute top-4 right-4 w-3 h-3 rounded-full ${
