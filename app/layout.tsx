@@ -10,17 +10,13 @@ const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-fira-code" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://circuitlabs.io"),
-
   title: "CircuitLabs",
   description: "Quantum Resistant Blockchain Solutions",
 
+  // Минимальный набор иконок
   icons: {
-    icon: [
-      { url: "/CircuitLabs.ico", type: "image/x-icon" }, // стандартный favicon
-      { url: "/android-chrome-192x192.png", type: "image/png", sizes: "192x192" },
-      { url: "/android-chrome-512x512.png", type: "image/png", sizes: "512x512" },
-    ],
-    apple: "/apple-touch-icon.png", // иконка для iOS
+    icon: "/CircuitLabs.ico",
+    apple: "/apple-touch-icon.png",
   },
 
   openGraph: {
