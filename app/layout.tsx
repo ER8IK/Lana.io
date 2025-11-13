@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "CircuitLabs",
   description: "Quantum Resistant Blockchain Solutions",
   icons: {
-    icon: "/android-chrome-512x512.png",        // favicon для браузеров
+    icon: "/CircuitLabs.ico",        // favicon для браузеров
     apple: "/apple-touch-icon.png",       // Apple touch icon
     other: [
       { url: "/android-chrome-192x192.png", type: "image/png", sizes: "192x192" },
