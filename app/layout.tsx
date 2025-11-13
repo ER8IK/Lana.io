@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "CircuitLabs",
   description: "Quantum Resistant Blockchain Solutions",
   icons: {
-    icon: "/LogoCircuit.ico",
+    icon: "/CircuitLabs.ico",
     apple: "/CircuitLabs.jpg",
     other: [
       { url: "/CircuitLabs.jpg", type: "image/jpg", sizes: "192x192" },
