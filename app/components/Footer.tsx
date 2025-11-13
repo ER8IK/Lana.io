@@ -57,20 +57,15 @@ ${fullname}`
       >
         {/* 🔹 Призыв к действию */}
         <div className="text-center md:text-left">
-          <h3 className="font-orbitron text-3xl bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-            Get in Touch
-          </h3>
-          <p className="text-gray-400 text-sm md:text-base mt-2">
-            Have a project in mind?{" "}
-            <a
-              href="mailto:lana@circuitlabs.io"
-              className="text-blue-400 hover:underline"
-            >
-              Send us an email
-            </a>
-            .
-          </p>
-        </div>
+  <h3 className="font-orbitron text-3xl bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+    Get in Touch
+  </h3>
+  <p className="text-gray-400 text-sm md:text-base mt-2">
+    Have a project in mind?{" "}
+    <span className="text-blue-400">Send us an email.</span>
+  </p>
+</div>
+
 
         {/* 🔹 Форма для отправки */}
         <form onSubmit={handleEmailRedirect} className="flex flex-col gap-3 w-full max-w-md">
