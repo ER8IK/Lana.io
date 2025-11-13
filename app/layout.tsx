@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter, Orbitron, Roboto, Lora, Fira_Code } from "next/font/google";
 import "./globals.css";
@@ -13,11 +12,11 @@ export const metadata: Metadata = {
   title: "CircuitLabs",
   description: "Quantum Resistant Blockchain Solutions",
   icons: {
-    icon: "/CircuitLabs.ico",
-    apple: "/CircuitLabs.jpg",
+    icon: "/CircuitLabs.ico",        // favicon для браузеров
+    apple: "/CircuitLabs.jpg",       // Apple touch icon
     other: [
-      { url: "/CircuitLabs.jpg", type: "image/jpg", sizes: "192x192" },
-      { url: "/CircuitLabs.jpg", type: "image/jpg", sizes: "512x512" }
+      { url: "/CircuitLabs.jpg", type: "image/jpeg", sizes: "192x192" },
+      { url: "/CircuitLabs.jpg", type: "image/jpeg", sizes: "512x512" }
     ]
   },
   openGraph: {
@@ -30,8 +29,7 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-  
-  metadataBase: new URL("https://circuitlabs.io"), // базовый URL для относительных ссылок
+  metadataBase: new URL("https://circuitlabs.io"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
