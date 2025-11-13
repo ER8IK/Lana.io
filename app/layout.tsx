@@ -13,10 +13,10 @@ export const metadata: Metadata = {
   description: "Quantum Resistant Blockchain Solutions",
   icons: {
     icon: "/CircuitLabs.ico",        // favicon для браузеров
-    apple: "/CircuitLabs.jpg",       // Apple touch icon
+    apple: "/CircuitLabs.png",       // Apple touch icon
     other: [
-      { url: "/CircuitLabs.jpg", type: "image/jpeg", sizes: "192x192" },
-      { url: "/CircuitLabs.jpg", type: "image/jpeg", sizes: "512x512" }
+      { url: "/CircuitLabs.png", type: "image/png", sizes: "192x192" },
+      { url: "/CircuitLabs.png", type: "image/png", sizes: "512x512" }
     ]
   },
   openGraph: {
