@@ -8,7 +8,7 @@ export default function Footer() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "error">("idle");
 
-  const handleGmailRedirect = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEmailRedirect = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!fullname.trim() || !message.trim()) {
@@ -29,16 +29,17 @@ Best regards,
 ${fullname}`
     );
 
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=lana@circuitlabs.io&su=${subject}&body=${body}`;
     const mailtoLink = `mailto:lana@circuitlabs.io?subject=${subject}&body=${body}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=lana@circuitlabs.io&su=${subject}&body=${body}`;
 
-    // ✅ Определяем мобильное устройство
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {
-      window.location.href = mailtoLink; // открывает почтовое приложение
+      // На мобильных устройствах открываем стандартное почтовое приложение
+      window.location.href = mailtoLink;
     } else {
-      window.open(gmailLink, "_blank"); // открывает Gmail в браузере
+      // На десктопе открываем Gmail в новой вкладке
+      window.open(gmailLink, "_blank");
     }
 
     setFullName("");
@@ -54,14 +55,25 @@ ${fullname}`
         transition={{ duration: 0.8 }}
         className="max-w-3xl mx-auto flex flex-col items-center gap-6"
       >
+        {/* 🔹 Призыв к действию */}
         <div className="text-center md:text-left">
-          <h3 className="font-orbitron text-3xl text-blue-500 to-cyan-400">Get in touch</h3>
+          <h3 className="font-orbitron text-3xl bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            Get in Touch
+          </h3>
           <p className="text-gray-400 text-sm md:text-base mt-2">
-    Have a project in mind?</p> <p className="text-blue-400 hover:underline"> Send us an email.
-  </p>
+            Have a project in mind?{" "}
+            <a
+              href="mailto:lana@circuitlabs.io"
+              className="text-blue-400 hover:underline"
+            >
+              Send us an email
+            </a>
+            .
+          </p>
         </div>
 
-        <form onSubmit={handleGmailRedirect} className="flex flex-col gap-3 w-full max-w-md">
+        {/* 🔹 Форма для отправки */}
+        <form onSubmit={handleEmailRedirect} className="flex flex-col gap-3 w-full max-w-md">
           <input
             type="text"
             name="fullname"
@@ -81,7 +93,7 @@ ${fullname}`
             className="bg-[#101223] border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-400 resize-none h-28 w-full"
           />
 
-          <div className="flex justify-center gap-3 mt-3">
+          <div className="flex flex-col md:flex-row justify-center gap-3 mt-3 items-center">
             <button
               type="submit"
               className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 hover:from-blue-500 hover:via-indigo-400 hover:to-blue-300 active:from-blue-700 active:via-indigo-600 active:to-blue-500 text-white font-medium px-4 py-2 rounded-lg transition-all duration-200"
@@ -89,11 +101,16 @@ ${fullname}`
               Send Message
             </button>
 
-            {status === "error" && <span className="text-red-400 text-sm">Please fill in all fields.</span>}
+            {status === "error" && (
+              <span className="text-red-400 text-sm mt-2 md:mt-0">
+                Please fill in all fields.
+              </span>
+            )}
           </div>
         </form>
       </motion.div>
 
+      {/* 🔹 Footer copyright */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
