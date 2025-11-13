@@ -6,7 +6,6 @@ import Main from "./components/Main";
 import About from "./components/About";
 import Solutions from "./components/Solutions";
 import Research from "./components/Research";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 const containerVariants = {
@@ -63,7 +62,12 @@ export default function Page() {
           <Research />
         </motion.section>
 
-        
+        <motion.section 
+          variants={sectionVariants}
+          className="snap-start"
+        >
+          <Footer />
+        </motion.section>
       </motion.main>
     </div>
   );

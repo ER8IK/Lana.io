@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   description: "Quantum Resistant Blockchain Solutions",
   icons: {
     icon: "/LogoCircuit.ico",
-    apple: "/LogoCircuit.png",
+    apple: "/CircuitLabs.jpg",
     other: [
-      { url: "/LogoCircuit.png", type: "image/png", sizes: "192x192" },
-      { url: "/LogoCircuit.png", type: "image/png", sizes: "512x512" }
+      { url: "/CircuitLabs.jpg", type: "image/jpg", sizes: "192x192" },
+      { url: "/CircuitLabs.jpg", type: "image/jpg", sizes: "512x512" }
     ]
   },
   openGraph: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: "https://circuitlabs.io/",
     siteName: "CircuitLabs",
     images: [
-      { url: "https://circuitlabs.io/LogoCircuit.png", width: 1200, height: 630, alt: "CircuitLabs Logo" }
+      { url: "https://circuitlabs.io/CircuitLabs.jpg", width: 1200, height: 630, alt: "CircuitLabs Logo" }
     ],
     type: "website",
   },

@@ -33,7 +33,7 @@ const Header: FC<HeaderProps> = () => {
           />
 
           <Link
-            href="/"
+            href="#home"
             className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent text-xl sm:text-3xl font-orbitron font-bold"
           >
             CircuitLabs
