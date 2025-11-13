@@ -57,7 +57,7 @@ ${fullname}`
         <div className="text-center md:text-left">
           <h3 className="font-orbitron text-3xl text-blue-500 to-cyan-400">Get in touch</h3>
           <p className="text-gray-400 text-sm md:text-base mt-2">
-    Have a project in mind? <a href="mailto:contact@circuitlabs.io" className="text-blue-400 hover:underline">Send us an email</a>.
+    Have a project in mind?</p> <p className="text-blue-400 hover:underline"> Send us an email.
   </p>
         </div>
 
