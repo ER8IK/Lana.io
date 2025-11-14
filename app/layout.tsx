@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
   // Минимальный набор иконок
   icons: {
-    icon: "/CircuitLabs.ico",
+    icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "CircuitLabs",
     images: [
       {
-        url: "/CircuitLabs.png",
+        url: "/CircuitLabsFotor.png",
         width: 1200,
         height: 630,
         alt: "CircuitLabs Logo",
