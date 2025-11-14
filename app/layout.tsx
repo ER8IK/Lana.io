@@ -10,29 +10,54 @@ const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-fira-code" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://circuitlabs.io"),
-  title: "CircuitLabs",
-  description: "Quantum Resistant Blockchain Solutions",
+  title: "CircuitLabs - Quantum Resistant Blockchain Solutions",
+  description: "Build secure blockchains with zero-knowledge proofs and quantum-resistant cryptography. Advanced security for Web3 and decentralized systems.",
 
-  // Минимальный набор иконок
+  // Используем то что у тебя есть
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/web-app-manifest-192x192.png", 
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon", 
+        url: "/web-app-manifest-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
   },
 
+  manifest: "/site.webmanifest",
+
+  // Соцсети
   openGraph: {
     title: "CircuitLabs",
     description: "Quantum Resistant Blockchain Solutions",
-    url: "https://circuitlabs.io/",
-    siteName: "CircuitLabs",
     images: [
       {
-        url: "/CircuitLabsFotor.png",
+        url: "/og-image.png", // Сделаешь позже
         width: 1200,
         height: 630,
-        alt: "CircuitLabs Logo",
+        alt: "CircuitLabs",
       },
     ],
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image", 
+    images: "/twitter-image.png", // Сделаешь позже
   },
 };
 
