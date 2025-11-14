@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       subject: `New message from ${fullname}`,
       text: `Name: ${fullname}\nMessage:\n${message}`,
       html: `
-        <h3>New Contact Form Submission</h3>
+        <h3>New Message Form Website</h3>
         <p><strong>Name:</strong> ${fullname}</p>
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>

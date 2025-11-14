@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Orbitron, Roboto, Lora, Fira_Code } from "next/font/google";
 import "./globals.css";
+import { StructuredData } from "./components/StructuredData"; // добавь этот импорт
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["400", "700", "900"], variable: "--font-orbitron" });
@@ -10,10 +11,12 @@ const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-fira-code" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://circuitlabs.io"),
-  title: "CircuitLabs - Quantum Resistant Blockchain Solutions",
+  title: {
+    default: "CircuitLabs - Quantum Resistant Blockchain Solutions",
+    template: "%s | CircuitLabs"
+  },
   description: "Build secure blockchains with zero-knowledge proofs and quantum-resistant cryptography. Advanced security for Web3 and decentralized systems.",
 
-  // Используем то что у тебя есть
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -40,16 +43,21 @@ export const metadata: Metadata = {
 
   manifest: "/site.webmanifest",
 
-  // Соцсети
+  // Добавь явное указание логотипа
+  other: {
+    "og:logo": "https://circuitlabs.io/web-app-manifest-512x512.png",
+    "twitter:logo": "https://circuitlabs.io/web-app-manifest-512x512.png",
+  },
+
   openGraph: {
     title: "CircuitLabs",
     description: "Quantum Resistant Blockchain Solutions",
     images: [
       {
-        url: "/og-image.png", // Сделаешь позже
-        width: 1200,
-        height: 630,
-        alt: "CircuitLabs",
+        url: "/web-app-manifest-512x512.png", // временно используй существующую иконку
+        width: 512,
+        height: 512,
+        alt: "CircuitLabs Logo",
       },
     ],
     type: "website",
@@ -57,7 +65,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image", 
-    images: "/twitter-image.png", // Сделаешь позже
+    images: "/web-app-manifest-512x512.png", // временно используй существующую иконку
   },
 };
 
@@ -67,6 +75,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${orbitron.variable} ${roboto.variable} ${lora.variable} ${firaCode.variable}`}
     >
+      <head>
+        <StructuredData />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
