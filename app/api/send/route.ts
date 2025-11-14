@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
   // отправляем письмо
   await transporter.sendMail({
-    from: "CircuitLabs <onboarding@resend.dev>",
+    from: "no-reply@circuitlabs.io",
     to: "lana@circuitlabs.io",
     subject: `New message from ${fullname}`,
     text: `Name: ${fullname}\nMessage:\n${message}`,
