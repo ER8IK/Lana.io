@@ -1,4 +1,6 @@
-import nodemailer from "nodemailer";
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   const { fullname, message } = await request.json();
@@ -7,24 +9,30 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
   }
 
-  // создаём SMTP транспорт
-  const transporter = nodemailer.createTransport({
-    host: "smtp.resend.com",
-    port: 465,
-    secure: true, // TLS
-    auth: {
-      user: "resend",
-      pass: process.env.RESEND_API_KEY, // ключ Resend
-    },
-  });
+  try {
+    // Отправляем через Resend API
+    const { data, error } = await resend.emails.send({
+      from: 'CircuitLabs <no-reply@circuitlabs.io>',
+      to: ['lana@circuitlabs.io'], // массив адресов
+      subject: `New message from ${fullname}`,
+      text: `Name: ${fullname}\nMessage:\n${message}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${fullname}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+      `,
+    });
 
-  // отправляем письмо
-  await transporter.sendMail({
-    from: "no-reply@circuitlabs.io",
-    to: "lana@circuitlabs.io",
-    subject: `New message from ${fullname}`,
-    text: `Name: ${fullname}\nMessage:\n${message}`,
-  });
+    if (error) {
+      console.error('Resend error:', error);
+      return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    }
 
-  return new Response(JSON.stringify({ ok: true }));
+    return new Response(JSON.stringify({ ok: true, data }));
+
+  } catch (error) {
+    console.error('Server error:', error);
+    return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500 });
+  }
 }
