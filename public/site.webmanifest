@@ -1,21 +1,26 @@
 {
   "name": "CircuitLabs",
-  "short_name": "CircuitLabs",
+  "short_name": "CircuitLabs", 
+  "description": "Quantum Resistant Blockchain Solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c16",
+  "theme_color": "#0a0c16",
   "icons": [
     {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
       "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "sizes": "192x192", 
+      "type": "image/png"
     },
     {
       "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     }
-  ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+  ]
 }

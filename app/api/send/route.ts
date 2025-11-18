@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   try {
     // Отправляем через Resend API
     const { data, error } = await resend.emails.send({
-      from: 'CircuitLabs <no-reply@circuitlabs.io>',
+      from: 'CircuitLabs <contact@circuitlabs.io>',
       to: ['lana@circuitlabs.io'], // массив адресов
       subject: `New message from ${fullname}`,
       text: `Name: ${fullname}\nMessage:\n${message}`,
