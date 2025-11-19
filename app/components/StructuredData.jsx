@@ -6,7 +6,7 @@ export function StructuredData() {
     "url": "https://circuitlabs.io",
     "logo": "https://circuitlabs.io/web-app-manifest-512x512.png",
     "description": "Quantum Resistant Blockchain Solutions",
-    "sameAs": [] // добавь ссылки на соцсети когда будут
+    "sameAs": [] 
   };
 
   return (

@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useRef } from "react";
 import { Play, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
