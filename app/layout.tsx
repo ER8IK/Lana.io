@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   },
   description: "Build secure blockchains with zero-knowledge proofs and quantum-resistant cryptography. Advanced security for Web3 and decentralized systems.",
 
-  // Улучшенные иконки
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -46,13 +45,13 @@ export const metadata: Metadata = {
 
   manifest: "/site.webmanifest",
 
-  // Улучшенные Open Graph теги для Telegram
+  // ✅ ИСПРАВЛЕНЫ ПУТИ - убрана папка /images/
   openGraph: {
     title: "CircuitLabs - Quantum Resistant Blockchain Solutions",
     description: "Build secure blockchains with zero-knowledge proofs and quantum-resistant cryptography. Advanced security for Web3 and decentralized systems.",
     images: [
       {
-        url: "/images/telegram-preview.png", // Создайте это изображение!
+        url: "/telegram-preview.png", // Файл должен быть в public/telegram-preview.png
         width: 1200,
         height: 630,
         alt: "CircuitLabs - Quantum Resistant Blockchain Solutions",
@@ -64,26 +63,24 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
 
-  // Улучшенные Twitter Card теги
   twitter: {
     card: "summary_large_image", 
-    creator: "@circuitlabs", // Добавьте ваш Twitter аккаунт
+    creator: "@circuitlabs",
     title: "CircuitLabs - Quantum Resistant Blockchain Solutions",
     description: "Build secure blockchains with zero-knowledge proofs and quantum-resistant cryptography.",
-    images: ["/images/telegram-preview.png"], // То же изображение
+    images: ["/telegram-preview.png"], // ✅ Файл в public/telegram-preview.png
   },
 
-  // Дополнительные мета-теги
+  // ✅ ИСПРАВЛЕНЫ ПУТИ
   other: {
-    "og:logo": `${siteUrl}/images/telegram-preview.png`,
-    "twitter:logo": `${siteUrl}/images/telegram-preview.png`,
+    "og:logo": `${siteUrl}/telegram-preview.png`,
+    "twitter:logo": `${siteUrl}/telegram-preview.png`,
     "og:image:type": "image/png",
     "og:image:width": "1200",
     "og:image:height": "630",
     "og:image:alt": "CircuitLabs - Quantum Resistant Blockchain Solutions",
   },
 
-  // Добавлены keywords для SEO
   keywords: [
     "quantum cryptography",
     "blockchain security", 
@@ -104,13 +101,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <StructuredData />
         
-        {/* Дополнительные мета-теги для Telegram и мобильных устройств */}
         <meta name="theme-color" content="#0a0c16" />
         <meta name="msapplication-TileColor" content="#0a0c16" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
-        {/* Каноническая ссылка */}
         <link rel="canonical" href={siteUrl} />
       </head>
       <body className={inter.className}>{children}</body>

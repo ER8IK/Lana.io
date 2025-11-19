@@ -1,10 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   env: {
     RESEND_API_KEY: process.env.RESEND_API_KEY
-  }
+  },
+  // Пока убираем редирект с www
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/:path*', 
+  //       has: [{ type: 'host', value: 'www.circuitlabs.io' }],
+  //       destination: 'https://circuitlabs.io/:path*',
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;
